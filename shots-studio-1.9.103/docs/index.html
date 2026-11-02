@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shots Studio - AI-Powered Screenshot Management</title>
+    <meta name="description" content="AI-powered screenshot management. Searchable. Organized. Decluttered. Turn your chaotic screenshot gallery into an intelligent, organized archive.">
+    <meta name="keywords" content="AI, screenshot management, mobile app, artificial intelligence, organization, productivity">
+    <meta name="author" content="Shots Studio Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shotsstudio.com/">
+    <meta property="og:title" content="Shots Studio - AI-Powered Screenshot Management">
+    <meta property="og:description" content="AI-powered screenshot management. Searchable. Organized. Decluttered.">
+    <meta property="og:image" content="https://shotsstudio.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://shotsstudio.com/">
+    <meta property="twitter:title" content="Shots Studio - AI-Powered Screenshot Management">
+    <meta property="twitter:description" content="AI-powered screenshot management. Searchable. Organized. Decluttered.">
+    <meta property="twitter:image" content="https://shotsstudio.com/assets/twitter-image.png">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PostHog Analytics -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Ee Ps Rs xe ks Is capture We calculateEventProperties Cs register register_once register_for_session unregister unregister_for_session Ds getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Fs Ms createPersonProfile As Es opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ts debug Os getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_10fnP6axCcilWjYny4YISbDbsKjtpQ0PI0yhXroQtXd', {
+            api_host: 'https://us.i.posthog.com',
+            person_profiles: 'identified_only',
+            autocapture: true,
+            capture_pageview: true,
+            capture_pageleave: true,
+            session_recording: {
+                enabled: false
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Shots Studio Logo" class="logo-img">
+                <span class="logo-text">Shots Studio</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="documentation.html" class="nav-link">Documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#download" class="nav-link">Download</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/AnsahMohammad/shots-studio" class="nav-link" title="Star on GitHub">
+                        <i class="fab fa-github"></i>
+                        Star
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="donation.html" class="nav-link cta-button" title="Sponsor">
+                        <i class="fas fa-heart"></i>
+                        Donate
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Screenshot Management
+                    <span class="gradient-text">Made Simple</span>
+                </h1>
+                <p class="hero-description">
+                    Turn your chaotic screenshot gallery into an intelligent, organized archive. 
+                    Backed by powerful AI, make your screenshots searchable, taggable, and easy to browse.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Download Now
+                    </a>
+                    <a href="documentation.html" class="btn btn-secondary">
+                        <i class="fas fa-book"></i>
+                        View Documentation
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="downloads-count">53300</span>
+                        <span class="stat-label">Downloads</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="stars-count">482</span>
+                        <span class="stat-label">GitHub Stars</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1235016</span>
+                        <span class="stat-label">Screenshots Organized</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="multi-carousel-container">
+                    <div class="multi-carousel-track">
+                        <div class="multi-carousel-slide" data-index="0">
+                            <img src="assets/Shots_Studio_Screenshots/2.png" alt="Shots Studio Screenshot 2" class="screenshot-img">
+                        </div>
+                        <div class="multi-carousel-slide" data-index="1">
+                            <img src="assets/Shots_Studio_Screenshots/3.png" alt="Shots Studio Screenshot 3" class="screenshot-img">
+                        </div>
+                        <div class="multi-carousel-slide" data-index="2">
+                            <img src="assets/Shots_Studio_Screenshots/4.png" alt="Shots Studio Screenshot 4" class="screenshot-img">
+                        </div>
+                        <div class="multi-carousel-slide" data-index="3">
+                            <img src="assets/Shots_Studio_Screenshots/5.png" alt="Shots Studio Screenshot 5" class="screenshot-img">
+                        </div>
+                        <div class="multi-carousel-slide" data-index="4">
+                            <img src="assets/Shots_Studio_Screenshots/6.png" alt="Shots Studio Screenshot 6" class="screenshot-img">
+                        </div>
+                        <div class="multi-carousel-slide" data-index="5">
+                            <img src="assets/Shots_Studio_Screenshots/7.png" alt="Shots Studio Screenshot 7" class="screenshot-img">
+                        </div>
+                        <div class="multi-carousel-slide" data-index="6">
+                            <img src="assets/Shots_Studio_Screenshots/8.png" alt="Shots Studio Screenshot 8" class="screenshot-img">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-indicators">
+                        <span class="multi-indicator active" data-index="0"></span>
+                        <span class="multi-indicator" data-index="1"></span>
+                        <span class="multi-indicator" data-index="2"></span>
+                        <span class="multi-indicator" data-index="3"></span>
+                        <span class="multi-indicator" data-index="4"></span>
+                        <span class="multi-indicator" data-index="5"></span>
+                        <span class="multi-indicator" data-index="6"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-description">
+                    Everything you need to manage your screenshots intelligently
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Search</h3>
+                    <p class="feature-description">
+                        Search screenshots by text, objects, or topics they contain — even if they were never manually labeled.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3 class="feature-title">Smart Tagging</h3>
+                    <p class="feature-description">
+                        Let AI suggest relevant tags or add your own to keep your gallery tidy and context-rich.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="feature-title">Collections</h3>
+                    <p class="feature-description">
+                        Group related screenshots into named collections for effortless navigation and organization.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Choose Your AI</h3>
+                    <p class="feature-description">
+                        Pick between Gemini 2.0 Flash for speed or Gemini 2.5 Pro for deeper analysis. You control the power.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Privacy First</h3>
+                    <p class="feature-description">
+                        We never store your data. All processing happens securely through Google's Gemini API.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3 class="feature-title">Open Source</h3>
+                    <p class="feature-description">
+                        Built with transparency and community in mind. Explore the code. Contribute. Make it yours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Free & Open Source</h2>
+                <p class="section-description">
+                    Built by the community, for the community. No subscriptions, no hidden costs.
+                </p>
+            </div>
+            
+            <div class="open-source-content">
+                <div class="support-callout">
+                    <div class="support-content">
+                        <h4><i class="fas fa-heart"></i> Help Keep Shots Studio Growing</h4>
+                        <p>As an open source project, we depend on the generosity of our community. Your donations help us:</p>
+                        <ul class="support-list">
+                            <li>Continue development and add new features</li>
+                            <li>Maintain servers and infrastructure</li>
+                            <li>Support the developer's time and effort</li>
+                        </ul>
+                        <a href="donation.html" class="btn btn-primary">
+                            <i class="fas fa-heart"></i>
+                            Donate & Support
+                        </a>
+                    </div>
+                </div>
+
+                <div class="why-open-source">
+                    <h3>Why Choose Open Source?</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h4>Transparency</h4>
+                            <p>Every line of code is open for inspection. No hidden functionality or data collection.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Privacy First</h4>
+                            <p>Your data stays with you. We never store or have access to your screenshots.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Community Driven</h4>
+                            <p>Built by developers, for developers. Contribute, suggest features, or fork the project.</p>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Shots Studio</h2>
+                    <p class="about-description">
+                        Shots Studio was born from a simple frustration: the inability to find 
+                        important screenshots when you need them most.
+                    </p>
+                    <p class="about-description">
+                        We believe that technology should work for you, not against you. That's why we've created 
+                        an open-source solution that puts you in control of your data while leveraging the power 
+                        of modern AI to make your digital life more organized.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <h3 id="about-downloads">50000</h3>
+                            <p>Downloads</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3 id="about-stars">★</h3>
+                            <p>GitHub Stars</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3>50000</h3>
+                            <p>Screenshots Processed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/team-photo.png" alt="Shots Studio Team" class="team-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <h2 class="section-title">Get Started Today</h2>
+                <p class="section-description">
+                    Download Shots Studio and transform your screenshot chaos into organized bliss
+                </p>
+                <div class="download-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Get API Key</h3>
+                        <p>Visit Google AI Studio to get your free Gemini API key. <a href="https://aistudio.google.com/app/apikey" target="_blank">Get Your Key</a>.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Download App</h3>
+                        <p>Download the latest APK from our releases page or get it from F-Droid</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Start Organizing</h3>
+                        <p>Configure your API key and let AI organize your screenshots</p>
+                    </div>
+                </div>
+                <div class="download-buttons">
+                    <button id="downloadBtn" class="btn btn-primary btn-large">
+                        <i class="fab fa-android"></i>
+                        Download for Android
+                    </button>
+                    <a href="https://github.com/AnsahMohammad/shots-studio" class="btn btn-secondary btn-large">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose Download Source</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="download-option-card">
+                    <div class="option-icon primary">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="option-content">
+                        <h4>GitHub Releases</h4>
+                        <p class="option-subtitle">Official • Latest • Direct</p>
+                        <p>Get the newest version immediately from our official repository. Perfect for early access to features and fastest updates.</p>
+                        <ul class="option-features">
+                            <li>✓ Latest version available</li>
+                            <li>✓ Direct from developers</li>
+                            <li>✓ Instant updates</li>
+                        </ul>
+                    </div>
+                    <a href="https://github.com/AnsahMohammad/shots-studio/releases" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Download from GitHub
+                    </a>
+                </div>
+                
+                <div class="option-divider">
+                    <span>OR</span>
+                </div>
+                
+                <div class="download-option-card">
+                    <div class="option-icon secondary">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="option-content">
+                        <h4>F-Droid</h4>
+                        <p class="option-subtitle">Open Source • Privacy Focused</p>
+                        <p>Download from F-Droid, the trusted open source app repository. All apps are verified and built from source code.</p>
+                        <ul class="option-features">
+                            <li>✓ Verified open source</li>
+                            <li>✓ Privacy focused</li>
+                            <li>✓ Built from source</li>
+                        </ul>
+                    </div>
+                    <a href="https://f-droid.org/en/packages/com.ansah.shots_studio/" class="btn btn-fdroid">
+                        <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" class="fdroid-badge">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Get in Touch</h2>
+                    <p class="section-description">
+                        Have questions, suggestions, or want to contribute? We'd love to hear from you.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>mohdansah10@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <p>github.com/AnsahMohammad/shots-studio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form class="form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="Shots Studio Logo" class="logo-img">
+                        <span class="logo-text">Shots Studio</span>
+                    </div>
+                    <p class="footer-description">
+                        AI-powered screenshot management. Searchable. Organized. Decluttered.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="documentation.html">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="donation.html">Donations</a></li>
+                        <!-- <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li> -->
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="https://github.com/AnsahMohammad/shots-studio/blob/main/LICENSE">License</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shots Studio. All rights reserved.</p>
+                <p>Licensed under GNU General Public License v3.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

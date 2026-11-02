@@ -1,0 +1,34 @@
+# This is the GitLab CI/CD configuration file.
+image: registry.gitlab.com/fdroid/fdroidserver:buildserver-bookworm
+
+stages:
+  - build
+
+generate-fdroid-release:
+  stage: build
+  script:
+    - echo "Setting up F-Droid environment..."
+    # 'bsenv.sh' sets up some necessary environment variables.
+    - source /etc/profile.d/bsenv.sh
+
+    - echo "Downloading the latest F-Droid server tools..."
+    # These are the missing steps:
+    # 1. Create a directory for the tools.
+    # 2. Download and extract the tools into that directory.
+    # 3. Add the tools' location to the PATH so they can be executed.
+    - mkdir -p /fdroidserver
+    - curl --silent https://gitlab.com/fdroid/fdroidserver/-/archive/master/fdroidserver-master.tar.gz | tar -xz --directory=/fdroidserver --strip-components=1
+    - export PATH="/fdroidserver:$PATH"
+
+    - echo "Building the F-Droid APK for com.ansah.shots_studio..."
+    # Now this command will work because 'fdroid' can be found in the PATH.
+    - fdroid build -v -l com.ansah.shots_studio
+
+    - echo "Build complete. APK is ready for artifact upload."
+
+  artifacts:
+    name: "fdroid-release-$CI_COMMIT_REF_NAME"
+    paths:
+      # The 'fdroid build' command places the final unsigned APK here.
+      - unsigned/com.ansah.shots_studio_*.apk
+    expire_in: 1 week

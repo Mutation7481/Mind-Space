@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Shots Studio</title>
+    <meta name="description" content="Complete documentation for Shots Studio - AI-powered screenshot management application.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PostHog Analytics -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Ee Ps Rs xe ks Is capture We calculateEventProperties Cs register register_once register_for_session unregister unregister_for_session Ds getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Fs Ms createPersonProfile As Es opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ts debug Os getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_10fnP6axCcilWjYny4YISbDbsKjtpQ0PI0yhXroQtXd', {
+            api_host: 'https://us.i.posthog.com',
+            person_profiles: 'identified_only',
+            autocapture: true,
+            capture_pageview: true,
+            capture_pageleave: true,
+            session_recording: {
+                enabled: false
+            }
+        });
+    </script>
+    
+    <style>
+        .docs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+        }
+
+        .docs-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            background: var(--bg-secondary);
+            padding: 24px;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .docs-nav {
+            list-style: none;
+        }
+
+        .docs-nav-item {
+            margin-bottom: 8px;
+        }
+
+        .docs-nav-link {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .docs-nav-link:hover,
+        .docs-nav-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .docs-content {
+            background: var(--bg-primary);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .docs-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .docs-content h2 {
+            font-size: 1.75rem;
+            margin: 40px 0 16px;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .docs-content h3 {
+            font-size: 1.25rem;
+            margin: 24px 0 12px;
+            color: var(--text-primary);
+        }
+
+        .docs-content p {
+            margin-bottom: 16px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .docs-content ul, .docs-content ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .docs-content li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #d4d4d4;
+            font-family: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
+            font-size: 14px;
+        }
+
+        .inline-code {
+            background: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
+            font-size: 0.9em;
+            color: var(--primary-color);
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .warning-box .warning-title {
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+
+        .warning-box p {
+            color: #92400e;
+            margin: 0;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .info-box .info-title {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #1e40af;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+                padding-top: 80px;
+            }
+
+            .docs-sidebar {
+                position: static;
+                order: 2;
+            }
+
+            .docs-content {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Shots Studio Logo" class="logo-img">
+                <span class="logo-text">Shots Studio</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#pricing" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="documentation.html" class="nav-link active">Documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#download" class="nav-link">Download</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/AnsahMohammad/shots-studio" class="nav-link" title="Star on GitHub">
+                        <i class="fab fa-github"></i>
+                        Star
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="donation.html" class="nav-link cta-button" title="Sponsor">
+                        <i class="fas fa-heart"></i>
+                        Donate
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar">
+            <ul class="docs-nav">
+                <li class="docs-nav-item">
+                    <a href="#getting-started" class="docs-nav-link active">Getting Started</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#installation" class="docs-nav-link">Installation</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#api-setup" class="docs-nav-link">API Setup</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#features-guide" class="docs-nav-link">Features Guide</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#collections" class="docs-nav-link">Collections</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#search" class="docs-nav-link">Search & Filtering</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#settings" class="docs-nav-link">Settings</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#troubleshooting" class="docs-nav-link">Troubleshooting</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#api-reference" class="docs-nav-link">API Reference</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#ocr-feature" class="docs-nav-link">OCR Feature</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#safety-features" class="docs-nav-link">Safety Features</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#update-installer" class="docs-nav-link">Update Installer</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#server-messages" class="docs-nav-link">Server Messages</a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#contributing" class="docs-nav-link">Contributing</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content">
+            <h1>Shots Studio Documentation</h1>
+            <p>Welcome to the complete documentation for Shots Studio, your AI-powered screenshot management solution.</p>
+
+            <section id="getting-started">
+                <h2>Getting Started</h2>
+                <p>Shots Studio is an Android application that uses artificial intelligence to help you organize, search, and manage your screenshots. This guide will walk you through everything you need to know to get started.</p>
+
+                <h3>What You'll Need</h3>
+                <ul>
+                    <li>Android device running Android 8.0 (API level 26) or higher</li>
+                    <li>Google Gemini API key (free to obtain)</li>
+                    <li>Storage permissions for accessing screenshots</li>
+                    <li>Internet connection for AI processing</li>
+                </ul>
+            </section>
+
+            <section id="installation">
+                <h2>Installation</h2>
+                
+                <h3>Download the APK</h3>
+                <ol>
+                    <li>Visit the <a href="https://github.com/yourusername/shots-studio/releases">Releases page</a> on GitHub</li>
+                    <li>Download the latest <code class="inline-code">shots-studio-v1.x.x.apk</code> file</li>
+                    <li>On your Android device, enable "Install from unknown sources" in Settings</li>
+                    <li>Open the downloaded APK file to install</li>
+                </ol>
+
+                <div class="warning-box">
+                    <div class="warning-title">⚠️ Security Notice</div>
+                    <p>Only download APK files from official sources. Always verify the file integrity before installation.</p>
+                </div>
+
+                <h3>First Launch</h3>
+                <p>When you first launch Shots Studio, you'll be prompted to:</p>
+                <ul>
+                    <li>Grant storage permissions</li>
+                    <li>Allow the app to access your device's screenshots</li>
+                    <li>Set up your Gemini API key</li>
+                </ul>
+            </section>
+
+            <section id="api-setup">
+                <h2>API Setup</h2>
+                
+                <h3>Getting Your Gemini API Key</h3>
+                <ol>
+                    <li>Visit <a href="https://ai.google.dev/gemini-api/docs/api-key">Google AI Studio</a></li>
+                    <li>Sign in with your Google account</li>
+                    <li>Click "Create API Key"</li>
+                    <li>Copy the generated API key</li>
+                </ol>
+
+                <h3>Configuring the API Key in Shots Studio</h3>
+                <ol>
+                    <li>Open Shots Studio</li>
+                    <li>Tap the menu icon (☰) in the top-left corner</li>
+                    <li>Select "Settings" → "API Key"</li>
+                    <li>Paste your API key and tap "Save"</li>
+                </ol>
+
+                <div class="code-block">
+                    <code>
+// Example API key format:
+AIzaSyBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                    </code>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-title">💡 Privacy Note</div>
+                    <p>Your API key is stored locally on your device and is only used to communicate with Google's Gemini API. Shots Studio never stores your data on external servers.</p>
+                </div>
+            </section>
+
+            <section id="features-guide">
+                <h2>Features Guide</h2>
+
+                <h3>AI-Powered Analysis</h3>
+                <p>Shots Studio uses Google's Gemini AI to analyze your screenshots and extract:</p>
+                <ul>
+                    <li><strong>Text content</strong> - OCR extraction from images</li>
+                    <li><strong>Object detection</strong> - Identifying elements in screenshots</li>
+                    <li><strong>Context understanding</strong> - Understanding the purpose and content</li>
+                    <li><strong>Smart tags</strong> - Automatic categorization and tagging</li>
+                </ul>
+
+                <h3>Processing Screenshots</h3>
+                <ol>
+                    <li>Tap the AI ⚡️ button in the top-right corner</li>
+                    <li>Select screenshots to process (or process all)</li>
+                    <li>Choose your AI model:
+                        <ul>
+                            <li><strong>Gemini 2.0 Flash</strong> - Fast processing, good for bulk operations</li>
+                            <li><strong>Gemini 2.5 Pro</strong> - Detailed analysis, better for complex screenshots</li>
+                        </ul>
+                    </li>
+                    <li>Wait for processing to complete</li>
+                </ol>
+            </section>
+
+            <section id="collections">
+                <h2>Collections</h2>
+                
+                <h3>Creating Collections</h3>
+                <p>Collections help you group related screenshots for easy access:</p>
+                <ol>
+                    <li>Tap the "+" button on the main screen</li>
+                    <li>Select "Create Collection"</li>
+                    <li>Enter a name and description</li>
+                    <li>Optionally enable "Auto-Add" for automatic population</li>
+                </ol>
+
+                <h3>Auto-Add Feature</h3>
+                <p>When Auto-Add is enabled, new screenshots matching the collection criteria will be automatically added. The AI determines relevance based on:</p>
+                <ul>
+                    <li>Collection name and description</li>
+                    <li>Existing screenshots in the collection</li>
+                    <li>Content similarity analysis</li>
+                </ul>
+
+                <h3>Managing Collections</h3>
+                <ul>
+                    <li><strong>Add screenshots</strong> - Long-press screenshots and select "Add to Collection"</li>
+                    <li><strong>Remove screenshots</strong> - In collection view, long-press and select "Remove"</li>
+                    <li><strong>Edit collection</strong> - Tap the edit icon in collection header</li>
+                    <li><strong>Delete collection</strong> - In collection settings, tap "Delete Collection"</li>
+                </ul>
+            </section>
+
+            <section id="search">
+                <h2>Search & Filtering</h2>
+
+                <h3>AI-Powered Search</h3>
+                <p>Search your screenshots using natural language:</p>
+                
+                <div class="code-block">
+                    <code>
+// Example search queries:
+"screenshots with code"
+"images containing text about recipes"
+"social media posts"
+"screenshots from last week"
+"images with phone numbers"
+                    </code>
+                </div>
+
+                <h3>Search Features</h3>
+                <ul>
+                    <li><strong>Content search</strong> - Find by text content within screenshots</li>
+                    <li><strong>Object search</strong> - Search for specific UI elements or objects</li>
+                    <li><strong>Date filtering</strong> - Filter by creation date</li>
+                    <li><strong>Tag filtering</strong> - Filter by AI-generated or manual tags</li>
+                    <li><strong>Collection filtering</strong> - Search within specific collections</li>
+                </ul>
+
+                <h3>Advanced Search Operators</h3>
+                <ul>
+                    <li><code class="inline-code">tag:work</code> - Find screenshots tagged with "work"</li>
+                    <li><code class="inline-code">date:2024-01-01</code> - Find screenshots from specific date</li>
+                    <li><code class="inline-code">collection:recipes</code> - Search within "recipes" collection</li>
+                </ul>
+            </section>
+
+            <section id="settings">
+                <h2>Settings</h2>
+
+                <h3>API Configuration</h3>
+                <ul>
+                    <li><strong>API Key</strong> - Manage your Gemini API key</li>
+                    <li><strong>Default Model</strong> - Choose between Flash and Pro models</li>
+                    <li><strong>Processing Quality</strong> - Adjust image quality for API calls</li>
+                </ul>
+
+                <h3>Storage & Performance</h3>
+                <ul>
+                    <li><strong>Cache Management</strong> - Clear processed data cache</li>
+                    <li><strong>Thumbnail Quality</strong> - Adjust thumbnail generation settings</li>
+                    <li><strong>Background Processing</strong> - Enable processing in background</li>
+                </ul>
+
+                <h3>Privacy Settings</h3>
+                <ul>
+                    <li><strong>Data Retention</strong> - How long to keep processed data</li>
+                    <li><strong>Analytics</strong> - Anonymous usage analytics (opt-in)</li>
+                    <li><strong>Crash Reporting</strong> - Help improve the app</li>
+                </ul>
+            </section>
+
+            <section id="troubleshooting">
+                <h2>Troubleshooting</h2>
+
+                <h3>Common Issues</h3>
+                
+                <h4>API Key Not Working</h4>
+                <ul>
+                    <li>Verify the API key is correctly copied (no extra spaces)</li>
+                    <li>Check that Gemini API is enabled in Google Cloud Console</li>
+                    <li>Ensure you have sufficient API quota</li>
+                </ul>
+
+                <h4>Screenshots Not Processing</h4>
+                <ul>
+                    <li>Check internet connection</li>
+                    <li>Verify storage permissions are granted</li>
+                    <li>Try processing smaller batches</li>
+                    <li>Check API usage limits</li>
+                </ul>
+
+                <h4>App Crashing</h4>
+                <ul>
+                    <li>Clear app cache in Android settings</li>
+                    <li>Restart the app</li>
+                    <li>Check available device storage</li>
+                    <li>Update to latest version</li>
+                </ul>
+
+                <h3>Performance Optimization</h3>
+                <ul>
+                    <li>Process screenshots in smaller batches</li>
+                    <li>Use Gemini Flash for bulk operations</li>
+                    <li>Clear cache periodically</li>
+                    <li>Close other apps while processing</li>
+                </ul>
+            </section>
+
+            <section id="api-reference">
+                <h2>API Reference</h2>
+
+                <h3>Gemini API Integration</h3>
+                <p>Shots Studio integrates with Google's Gemini API for AI processing. Here's how the integration works:</p>
+
+                <div class="code-block">
+                    <code>
+// API Endpoint
+POST https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-vision:generateContent
+
+// Request Headers
+Content-Type: application/json
+Authorization: Bearer YOUR_API_KEY
+
+// Request Body Example
+{
+  "contents": [{
+    "parts": [
+      {
+        "text": "Analyze this screenshot and extract text content, identify objects, and suggest relevant tags."
+      },
+      {
+        "inline_data": {
+          "mime_type": "image/jpeg",
+          "data": "base64_encoded_image_data"
+        }
+      }
+    ]
+  }]
+}
+                    </code>
+                </div>
+
+                <h3>Response Format</h3>
+                <p>The API returns structured data that Shots Studio processes to extract:</p>
+                <ul>
+                    <li>Extracted text content</li>
+                    <li>Identified objects and UI elements</li>
+                    <li>Suggested tags and categories</li>
+                    <li>Content description and context</li>
+                </ul>
+            </section>
+
+            <section id="ocr-feature">
+                <h2>OCR (Optical Character Recognition) Feature</h2>
+
+                <h3>Overview</h3>
+                <p>The OCR feature allows you to extract text from screenshots using the Tesseract OCR engine. This feature works completely offline and doesn't require internet connectivity.</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>Text Extraction</strong>: Extracts text from screenshot images using Tesseract OCR</li>
+                    <li><strong>Offline Processing</strong>: Works completely offline without internet connectivity</li>
+                    <li><strong>Clipboard Integration</strong>: Automatically copies extracted text to clipboard</li>
+                    <li><strong>User-Friendly Dialog</strong>: Shows extracted text in a dialog for review</li>
+                    <li><strong>Platform Support</strong>: Available on Android and iOS</li>
+                </ul>
+
+                <h3>How to Use</h3>
+                <ol>
+                    <li>Open any screenshot in the Screenshot Details screen</li>
+                    <li>Click the text extraction button (🔤) in the bottom navigation bar</li>
+                    <li>The app will process the image and extract any text found</li>
+                    <li>A dialog will display the extracted text</li>
+                    <li>Text is automatically copied to clipboard</li>
+                    <li>You can copy the text again if needed</li>
+                </ol>
+
+                <h3>Supported Image Sources</h3>
+                <ul>
+                    <li>File path-based images (mobile)</li>
+                    <li>Byte array-based images (web)</li>
+                    <li>Automatic temporary file creation when needed</li>
+                </ul>
+
+                <h3>Limitations</h3>
+                <ul>
+                    <li>OCR accuracy depends on image quality and text clarity</li>
+                    <li>Works best with clear, high-contrast text</li>
+                    <li>Processing time depends on image size and complexity</li>
+                    <li>Currently supports English by default (extensible to other languages)</li>
+                    <li>No layout preservation (basic text extraction only)</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-title">💡 Pro Tip</div>
+                    <p>For best OCR results, ensure your screenshots have clear, readable text with good contrast. Screenshots of documents, messages, or text-heavy content work particularly well.</p>
+                </div>
+            </section>
+
+            <section id="safety-features">
+                <h2>Auto-Processing Safety Features</h2>
+
+                <h3>Overview</h3>
+                <p>Shots Studio includes intelligent safety features that protect users from excessive resource usage during background AI processing. These features are model-specific and automatically monitor your device's battery and network conditions.</p>
+
+                <h3>Battery Protection (Gemma Models)</h3>
+                <p>When processing with Gemma models (which run locally on your device):</p>
+                <ul>
+                    <li><strong>Monitoring</strong>: Battery level checked every 2 minutes</li>
+                    <li><strong>Threshold</strong>: Processing automatically stops when battery ≤ 20%</li>
+                    <li><strong>Reason</strong>: Gemma runs locally and can drain battery quickly</li>
+                    <li><strong>Notification</strong>: You'll see a specific "Gemma Processing Stopped" message</li>
+                </ul>
+
+                <h3>Network Protection (Gemini Models)</h3>
+                <p>When processing with Gemini models (which use cloud API):</p>
+                <ul>
+                    <li><strong>Monitoring</strong>: Detects network connectivity changes in real-time</li>
+                    <li><strong>Trigger</strong>: Stops when switching from WiFi to mobile data</li>
+                    <li><strong>Reason</strong>: Gemini uses cloud API and can consume significant mobile data</li>
+                    <li><strong>Notification</strong>: You'll see a specific "Gemini Processing Stopped" message</li>
+                </ul>
+
+                <h3>How It Works</h3>
+                <p>When a safety condition is detected:</p>
+                <ol>
+                    <li><strong>Background Service Detects Issue</strong>: Battery ≤20% (Gemma) or WiFi→Mobile (Gemini)</li>
+                    <li><strong>Processing Stops</strong>: Background processing is immediately halted</li>
+                    <li><strong>Notification Shown</strong>: You see a prominent safety notification</li>
+                    <li><strong>App UI Updated</strong>: The app receives the safety stop event and updates UI</li>
+                    <li><strong>Animation Stops</strong>: Processing animation stops immediately</li>
+                    <li><strong>User Informed</strong>: Appropriate message explains what happened</li>
+                </ol>
+
+                <h3>Key Benefits</h3>
+                <ul>
+                    <li><strong>No Stuck UI</strong>: App never shows "processing" when it's actually stopped</li>
+                    <li><strong>Clear Communication</strong>: You know exactly why processing stopped</li>
+                    <li><strong>Model-Specific</strong>: Different safety rules for different AI models</li>
+                    <li><strong>Instant Response</strong>: UI updates immediately when safety stop occurs</li>
+                    <li><strong>Zero Impact When Idle</strong>: Monitoring only active during processing</li>
+                </ul>
+
+                <div class="warning-box">
+                    <div class="warning-title">⚠️ Important Note</div>
+                    <p>These safety features are designed to protect your battery and data usage. While you can restart processing after addressing the issue (charging or reconnecting to WiFi), the app prioritizes your device's health and your data plan.</p>
+                </div>
+            </section>
+
+            <section id="update-installer">
+                <h2>Update Installer Feature</h2>
+
+                <h3>Overview</h3>
+                <p>The update installer allows you to download and install app updates directly from within the app, without needing to manually download APK files from GitHub.</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>Automatic Platform Detection</strong>: Only shows install option on Android devices</li>
+                    <li><strong>Download Progress</strong>: Real-time progress tracking during APK download</li>
+                    <li><strong>Permission Management</strong>: Automatically requests and handles install permissions</li>
+                    <li><strong>Error Handling</strong>: Graceful fallback to browser-based download if installation fails</li>
+                    <li><strong>File Size Display</strong>: Shows estimated download size before starting</li>
+                    <li><strong>Analytics Integration</strong>: Tracks user interactions with update dialogs</li>
+                </ul>
+
+                <h3>How It Works</h3>
+                
+                <h4>Update Detection</h4>
+                <p>The app automatically checks for updates by comparing your current version with the latest release on GitHub. You'll see an update dialog when a new version is available.</p>
+
+                <h4>Installation Process (Android)</h4>
+                <ol>
+                    <li><strong>Permission Check</strong>: Verifies if the app has permission to install unknown apps</li>
+                    <li><strong>Permission Request</strong>: If not granted, redirects you to Android settings to enable it</li>
+                    <li><strong>APK Download</strong>: Downloads the APK file from GitHub releases with progress tracking</li>
+                    <li><strong>Installation</strong>: Uses Android's built-in APK installer to install the update</li>
+                    <li><strong>Cleanup</strong>: Temporary files are automatically handled by the system</li>
+                </ol>
+
+                <h4>Other Platforms</h4>
+                <p>On non-Android platforms or if installation fails, the app provides a fallback option to open the GitHub releases page in your browser for manual download.</p>
+
+                <h3>User Experience</h3>
+                
+                <h4>For Android Users</h4>
+                <ol>
+                    <li>Update dialog appears with "Install" button</li>
+                    <li>Shows download size estimate</li>
+                    <li>Click "Install" to start download</li>
+                    <li>Real-time progress indicator</li>
+                    <li>Automatic installation when download completes</li>
+                    <li>Success message with instruction to restart</li>
+                </ol>
+
+                <h4>For Other Platforms</h4>
+                <ol>
+                    <li>Update dialog appears with "Download" button</li>
+                    <li>Click "Download" opens GitHub releases page in browser</li>
+                    <li>Manually download and install</li>
+                </ol>
+
+                <h3>Security Considerations</h3>
+                <ul>
+                    <li>APK files are downloaded directly from official GitHub releases</li>
+                    <li>File integrity is verified by checking download size</li>
+                    <li>Uses Android's built-in installation process for security</li>
+                    <li>Temporary files are stored in app's cache directory</li>
+                    <li>FileProvider ensures secure file access across apps</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-title">💡 First Time Setup</div>
+                    <p>The first time you use the update installer, Android will prompt you to allow the app to install unknown apps. This is a standard security permission required for all apps that want to install APK files.</p>
+                </div>
+            </section>
+
+            <section id="contributing">
+                <h2>Contributing</h2>
+
+                <h3>Development Setup</h3>
+                <ol>
+                    <li>Clone the repository:
+                        <div class="code-block">
+                            <code>git clone https://github.com/yourusername/shots-studio.git</code>
+                        </div>
+                    </li>
+                    <li>Install Flutter SDK (version 3.10 or higher)</li>
+                    <li>Install dependencies:
+                        <div class="code-block">
+                            <code>flutter pub get</code>
+                        </div>
+                    </li>
+                    <li>Run the app:
+                        <div class="code-block">
+                            <code>flutter run</code>
+                        </div>
+                    </li>
+                </ol>
+
+                <h3>Project Structure</h3>
+                <div class="code-block">
+                    <code>
+lib/
+├── main.dart              # App entry point
+├── models/               # Data models
+│   ├── screenshot_model.dart
+│   ├── collection_model.dart
+│   └── gemini_model.dart
+├── screens/              # UI screens
+│   ├── home_screen.dart
+│   ├── search_screen.dart
+│   └── settings_screen.dart
+├── services/             # Business logic
+│   ├── gemini_service.dart
+│   ├── storage_service.dart
+│   └── notification_service.dart
+└── widgets/              # Reusable UI components
+                    </code>
+                </div>
+
+                <h3>Contributing Guidelines</h3>
+                <ul>
+                    <li>Fork the repository and create a feature branch</li>
+                    <li>Follow the existing code style and conventions</li>
+                    <li>Add tests for new functionality</li>
+                    <li>Update documentation as needed</li>
+                    <li>Submit a pull request with detailed description</li>
+                </ul>
+
+                <h3>Reporting Issues</h3>
+                <p>Found a bug or have a feature request? Please:</p>
+                <ol>
+                    <li>Check existing issues first</li>
+                    <li>Provide detailed reproduction steps</li>
+                    <li>Include device and Android version info</li>
+                    <li>Attach relevant screenshots or logs</li>
+                </ol>
+            </section>
+
+            <section id="server-messages">
+                <h2>Server Messages</h2>
+                <p>Shots Studio includes a robust server message system that allows for announcements, updates, and notifications to be delivered to users directly within the app.</p>
+
+                <h3>What are Server Messages?</h3>
+                <p>Server messages are notifications or dialogs that can be displayed in the app without requiring an app update. This system is used for:</p>
+                <ul>
+                    <li>Important announcements to all users</li>
+                    <li>Version-specific feature updates</li>
+                    <li>Critical service warnings</li>
+                    <li>Maintenance notifications</li>
+                </ul>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>Version targeting</strong>: Messages can target specific app versions</li>
+                    <li><strong>Show-once functionality</strong>: Messages can be configured to show only one time</li>
+                    <li><strong>Expiration dates</strong>: Messages automatically expire after a specified date</li>
+                    <li><strong>Multiple message types</strong>: Info, Warning, Update messages with appropriate styling</li>
+                    <li><strong>Display modes</strong>: Messages can appear as dialogs or notifications</li>
+                </ul>
+
+                <h3>Technical Implementation</h3>
+                <p>Messages are hosted in a static JSON file on GitHub Pages with a specified schema. For full technical details, see the <a href="https://github.com/yourusername/shots-studio/blob/main/shots_studio/docs/SERVER_MESSAGES.md" target="_blank">SERVER_MESSAGES.md</a> documentation.</p>
+                
+                <div class="code-block">
+                <pre><code>{
+  "version": "1.0",
+  "last_updated": "2023-01-21T12:00:00Z",
+  "messages": [
+    {
+      "show": true,
+      "id": "welcome_message",
+      "title": "Welcome to Shots Studio!",
+      "message": "Thanks for downloading Shots Studio! Organize your screenshots like never before.",
+      "type": "info",
+      "priority": "medium",
+      "show_once": true,
+      "version": "ALL"
+    }
+  ]
+}</code></pre>
+                </div>
+            </section>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                <p style="text-align: center; color: var(--text-light);">
+                    Need more help? <a href="index.html#contact" style="color: var(--primary-color);">Contact our support team</a> or 
+                    <a href="https://github.com/yourusername/shots-studio/issues" style="color: var(--primary-color);">open an issue on GitHub</a>.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Documentation-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for sidebar links
+            const sidebarLinks = document.querySelectorAll('.docs-nav-link');
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update active link
+                        sidebarLinks.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Update active link on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPos = window.scrollY + 120;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        sidebarLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

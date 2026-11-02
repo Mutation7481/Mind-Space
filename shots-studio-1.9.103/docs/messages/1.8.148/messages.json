@@ -1,0 +1,68 @@
+{
+  "messages": [
+      {
+        "show": false,
+        "id": "fdroid_broken_release_Nov16",
+        "title": "Broken F-Droid Pipeline",
+        "message": "Hi everyone!\n\nOur F-Droid pipeline is currently broken for an unknown reason. This is why there have been no recent updates. We are working with the F-Droid team to resolve the issue as soon as possible.\n\nIn the meantime, you can download the F-Droid version (non-F-Droid build) from the official GitLab release below. Thank you.",
+        "type": "info",
+        "priority": "high",
+        "show_once": true,
+        "valid_until": "2026-08-01T00:00:00Z",
+        "is_notification": false,
+        "version": "1.8.148",
+        "beta_only": false,
+        "action_text": "GitLab Release",
+        "dismiss_text": "Dismiss",
+        "action_url": "https://gitlab.com/mohdansah10/shots-studio/-/releases/v1.9.50"
+      },
+      {
+        "show": false,
+        "id": "github_outage_announcement_sep09",
+        "title": "Temporary GitHub Repository Outage",
+        "message": "Hi everyone! \n\nOur GitHub repository is currently unavailable due to an automated flagging issue (similar to what happened during the last release). This means the latest release distribution on GitHub will be delayed by about 2 days.\n\n Please use the gitlab mirror to refer to the source code.\n\n F-Droid users however are not affected since builds are sourced from GitLab.\n\nWe appreciate your patience and support while GitHub is being restored. 🙏",
+        "type": "info",
+        "priority": "high",
+        "show_once": true,
+        "valid_until": "2026-08-01T00:00:00Z",
+        "is_notification": false,
+        "version": "1.8.148",
+        "beta_only": false,
+        "action_text": "GitLab Source",
+        "dismiss_text": "Dismiss",
+        "action_url": "https://gitlab.com/mohdansah10/shots-studio"
+      },
+     {
+        "show": false,
+        "id": "play_release_invite",
+        "title": "🚀 Join the Google Play Beta Release!",
+        "message": "Hey beta testers! 👋\n\nThe Play Store launch is just around the corner, but we need your help first. We're looking for at least 12 awesome people to test the Play Store version of Shots-Studio for 12 days.\nIf you’re up for it, please fill out the form below.\n\nAs a thank you, you’ll get the Play Store version of the app for free! 🎉",
+        "type": "info",
+        "priority": "high",
+        "show_once": true,
+        "valid_until": "2026-08-01T00:00:00Z",
+        "is_notification": false,
+        "version": "1.8.148",
+        "beta_only": true,
+        "action_text": "Opt-In",
+        "dismiss_text": "Maybe Later",
+        "action_url": "https://forms.gle/YdvdFMjYnfMDmmML7"
+     },
+    {
+      "show": true,
+      "id": "try_features_1_8_148",
+      "title": "🔥 Welcome to Shots Studio 1.8.148!",
+      "message": "You've just unlocked v1.8.148 - our most ambitious upgrade yet. 🚀\n\nIt's a whole new experience:\n🌍 Habla en 11 idiomas - Shots Studio now talks like you! Check out the app language selection in Settings.\n🤖 On-device AI - The most awaited feature is here! Try the gemma-3n-e2b model: go to AI Settings to download and load it. It's impressive…\n🔔 Notifications that do more - with images and a unified screen on the home page where you can see all active and past reminders.\n🧹 One-tap media cleanup - remove all corrupt or deleted media in one click.\n\nYou're among the first to wield these tools. Go explore, and if you love this update, support the project! 💙 \n\n With Love, \n Team Shots Studio",
+      "type": "info",
+      "priority": "high",
+      "show_once": true,
+      "valid_until": "2026-08-01T00:00:00Z",
+      "is_notification": false,
+      "version": "1.8.148",
+      "beta_only": false,
+      "action_text": "Support Now",
+      "dismiss_text": "Later",
+      "action_url": "https://github.com/sponsors/AnsahMohammad"
+    }
+  ]
+}
